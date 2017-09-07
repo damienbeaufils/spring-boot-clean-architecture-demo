@@ -1,0 +1,11 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:clean-architecture-demo;FILE_LOCK=FILE;MODE=PostgreSQL}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml

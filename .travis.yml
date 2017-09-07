@@ -1,0 +1,11 @@
+language: java
+
+jdk:
+  - openjdk8
+
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew clean assemble
+    - stage: test
+      script: ./gradlew clean check pitest
