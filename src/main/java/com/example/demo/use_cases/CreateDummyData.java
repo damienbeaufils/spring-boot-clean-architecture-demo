@@ -19,8 +19,7 @@ public class CreateDummyData {
         this.dummyRepository = dummyRepository;
     }
 
-    public Dummy create() {
-        Dummy dummy = new Dummy("some dummy value");
+    public Dummy create(Dummy dummy) {
         return dummyRepository.save(dummy);
     }
 }

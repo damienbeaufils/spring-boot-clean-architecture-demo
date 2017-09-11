@@ -27,7 +27,7 @@ public class DummyUTest {
         Throwable throwable = catchThrowable(() -> new Dummy(value));
 
         // Then
-        assertThat(throwable).isInstanceOf(IllegalArgumentException.class)
+        assertThat(throwable).isInstanceOf(InvalidDummmyException.class)
                 .hasMessage("value cannot be null or empty");
     }
 
@@ -40,7 +40,7 @@ public class DummyUTest {
         Throwable throwable = catchThrowable(() -> new Dummy(value));
 
         // Then
-        assertThat(throwable).isInstanceOf(IllegalArgumentException.class)
+        assertThat(throwable).isInstanceOf(InvalidDummmyException.class)
                 .hasMessage("value cannot be null or empty");
     }
 

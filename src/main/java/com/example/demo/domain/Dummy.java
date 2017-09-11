@@ -14,7 +14,7 @@ public class Dummy {
 
     public Dummy(String value) {
         if (StringUtils.isEmpty(value)) {
-            throw new IllegalArgumentException("value cannot be null or empty");
+            throw new InvalidDummmyException("value cannot be null or empty");
         }
         this.value = value;
     }

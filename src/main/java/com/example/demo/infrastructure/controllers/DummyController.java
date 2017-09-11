@@ -1,11 +1,13 @@
 package com.example.demo.infrastructure.controllers;
 
 import com.example.demo.domain.Dummy;
+import com.example.demo.infrastructure.controllers.forms.CreateDummyDataForm;
 import com.example.demo.use_cases.CreateDummyData;
 import com.example.demo.use_cases.GetAllDummyData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class DummyController {
     }
 
     @PostMapping(value = "/api/dummy", produces = "application/json")
-    public Dummy createDummyData() {
-        return createDummyData.create();
+    public Dummy createDummyData(@RequestBody CreateDummyDataForm createDummyDataForm) {
+        return createDummyData.create(createDummyDataForm.toDummy());
     }
 }

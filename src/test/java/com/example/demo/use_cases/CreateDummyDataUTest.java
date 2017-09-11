@@ -5,13 +5,10 @@ import com.example.demo.domain.DummyRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -28,27 +25,16 @@ public class CreateDummyDataUTest {
     }
 
     @Test
-    public void create_should_save_new_dummy_data_with_some_dummy_value() {
-        // When
-        createDummyData.create();
-
-        // Then
-        ArgumentCaptor<Dummy> argumentCaptor = ArgumentCaptor.forClass(Dummy.class);
-        verify(dummyRepository).save(argumentCaptor.capture());
-        Dummy dummyToSave = argumentCaptor.getValue();
-        assertThat(dummyToSave.getValue()).isEqualTo("some dummy value");
-    }
-
-    @Test
-    public void create_should_return_saved_dummy_data() {
+    public void create_should_return_save_and_return_saved_dummy_data() {
         // Given
-        Dummy savedDummy = new Dummy();
-        when(dummyRepository.save(any(Dummy.class))).thenReturn(savedDummy);
+        Dummy dummy = new Dummy("some dummy value");
+        dummy.setId(42L);
+        when(dummyRepository.save(dummy)).thenReturn(dummy);
 
         // When
-        Dummy result = createDummyData.create();
+        Dummy result = createDummyData.create(dummy);
 
         // Then
-        assertThat(result).isEqualTo(savedDummy);
+        assertThat(result).isEqualTo(dummy);
     }
 }
