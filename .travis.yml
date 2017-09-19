@@ -8,4 +8,4 @@ jobs:
     - stage: build
       script: ./gradlew clean assemble
     - stage: test
-      script: ./gradlew clean check pitest
+      script: ./gradlew clean check

@@ -1,12 +1,13 @@
 package com.example.demo.use_cases;
 
+import com.example.demo.MockitoExtension;
 import com.example.demo.domain.Dummy;
 import com.example.demo.domain.DummyRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
@@ -14,29 +15,34 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class GetAllDummyDataUTest {
+@ExtendWith(MockitoExtension.class)
+class GetAllDummyDataUTest {
 
     private GetAllDummyData getAllDummyData;
 
     @Mock
     private DummyRepository dummyRepository;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         getAllDummyData = new GetAllDummyData(dummyRepository);
     }
 
-    @Test
-    public void getAll_return_all_dummy_data() {
-        // Given
-        List<Dummy> dummyData = asList(new Dummy(), new Dummy());
-        when(dummyRepository.findAll()).thenReturn(dummyData);
+    @Nested
+    class GetAllShould {
 
-        // When
-        List<Dummy> result = getAllDummyData.getAll();
+        @Test
+        void return_all_dummy_data() {
+            // Given
+            List<Dummy> dummyData = asList(new Dummy(), new Dummy());
+            when(dummyRepository.findAll()).thenReturn(dummyData);
 
-        // Then
-        assertThat(result).isEqualTo(dummyData);
+            // When
+            List<Dummy> result = getAllDummyData.getAll();
+
+            // Then
+            assertThat(result).isEqualTo(dummyData);
+        }
     }
+
 }

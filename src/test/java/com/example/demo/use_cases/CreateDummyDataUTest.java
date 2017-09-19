@@ -1,40 +1,46 @@
 package com.example.demo.use_cases;
 
+import com.example.demo.MockitoExtension;
 import com.example.demo.domain.Dummy;
 import com.example.demo.domain.DummyRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class CreateDummyDataUTest {
+@ExtendWith(MockitoExtension.class)
+class CreateDummyDataUTest {
 
     private CreateDummyData createDummyData;
 
     @Mock
     private DummyRepository dummyRepository;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         createDummyData = new CreateDummyData(dummyRepository);
     }
 
-    @Test
-    public void create_should_return_save_and_return_saved_dummy_data() {
-        // Given
-        Dummy dummy = new Dummy("some dummy value");
-        dummy.setId(42L);
-        when(dummyRepository.save(dummy)).thenReturn(dummy);
+    @Nested
+    class CreateShould {
 
-        // When
-        Dummy result = createDummyData.create(dummy);
+        @Test
+        void return_save_and_return_saved_dummy_data() {
+            // Given
+            Dummy dummy = new Dummy("some dummy value");
+            dummy.setId(42L);
+            when(dummyRepository.save(dummy)).thenReturn(dummy);
 
-        // Then
-        assertThat(result).isEqualTo(dummy);
+            // When
+            Dummy result = createDummyData.create(dummy);
+
+            // Then
+            assertThat(result).isEqualTo(dummy);
+        }
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.demo.infrastructure.database;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -12,27 +13,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class MappingsConfigurationUTest {
+class MappingsConfigurationUTest {
 
-    @Test
-    public void entityManagerFactory_should_create_new_entity_manager_factory_using_superclass_and_configure_mapping_resources() {
-        // Given
-        EntityManagerFactoryBuilder entityManagerFactoryBuilder = mock(EntityManagerFactoryBuilder.class);
-        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = mock(LocalContainerEntityManagerFactoryBean.class);
-        MappingsConfiguration mappingsConfiguration = new MappingsConfiguration(mock(DataSource.class), mock(JpaProperties.class), mock(ObjectProvider.class), mock(ObjectProvider.class), mock(ObjectProvider.class)) {
-            @Override
-            LocalContainerEntityManagerFactoryBean getSuperEntityManagerFactory(EntityManagerFactoryBuilder factoryBuilder) {
-                return factoryBuilder == entityManagerFactoryBuilder ? localContainerEntityManagerFactoryBean : null;
-            }
-        };
+    @Nested
+    class EntityManagerFactoryShould {
 
-        // When
-        LocalContainerEntityManagerFactoryBean result = mappingsConfiguration.entityManagerFactory(entityManagerFactoryBuilder);
+        @Test
+        void create_new_entity_manager_factory_using_superclass_and_configure_mapping_resources() {
+            // Given
+            EntityManagerFactoryBuilder entityManagerFactoryBuilder = mock(EntityManagerFactoryBuilder.class);
+            LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = mock(LocalContainerEntityManagerFactoryBean.class);
+            MappingsConfiguration mappingsConfiguration = new MappingsConfiguration(mock(DataSource.class), mock(JpaProperties.class), mock(ObjectProvider.class), mock(ObjectProvider.class), mock(ObjectProvider.class)) {
+                @Override
+                LocalContainerEntityManagerFactoryBean getSuperEntityManagerFactory(EntityManagerFactoryBuilder factoryBuilder) {
+                    return factoryBuilder == entityManagerFactoryBuilder ? localContainerEntityManagerFactoryBean : null;
+                }
+            };
 
-        // Then
-        verify(localContainerEntityManagerFactoryBean).setMappingResources(
-                "db/mappings/dummy.xml"
-        );
-        assertThat(result).isEqualTo(localContainerEntityManagerFactoryBean);
+            // When
+            LocalContainerEntityManagerFactoryBean result = mappingsConfiguration.entityManagerFactory(entityManagerFactoryBuilder);
+
+            // Then
+            verify(localContainerEntityManagerFactoryBean).setMappingResources(
+                    "db/mappings/dummy.xml"
+            );
+            assertThat(result).isEqualTo(localContainerEntityManagerFactoryBean);
+        }
     }
+
 }

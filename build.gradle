@@ -1,6 +1,10 @@
+import org.junit.platform.console.options.Details
+
 buildscript {
     ext {
         commonsLang3Version = '3.6'
+        junitJupiterVersion = '5.0.0'
+        junitPlatformVersion = '1.0.0'
         pitestPluginVersion = '1.2.2'
         springBootVersion = '2.0.0.BUILD-SNAPSHOT'
     }
@@ -12,6 +16,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${pitestPluginVersion}")
+        classpath("org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}")
     }
 }
 
@@ -20,6 +25,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'info.solidsoft.pitest'
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 pitest {
     targetClasses = ['com.example.demo.*']
@@ -46,7 +52,17 @@ dependencies {
     runtime('org.postgresql:postgresql')
     runtime('org.springframework.boot:spring-boot-devtools')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        // Exclude JUnit 4
+        exclude group: 'junit'
+    }
+    testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+    testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+    testCompile("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
+}
+
+junitPlatform {
+    details Details.TREE
 }
 
 task checkCleanArchitecture(type: Exec) {

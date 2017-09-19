@@ -1,47 +1,52 @@
 package com.example.demo.domain;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import com.example.demo.MockitoExtension;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-@RunWith(MockitoJUnitRunner.class)
-public class DummyUTest {
+@ExtendWith(MockitoExtension.class)
+class DummyUTest {
 
     private String value;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         value = "some dummy value";
     }
 
-    @Test
-    public void constructor_should_fail_when_value_is_null() {
-        // Given
-        value = null;
+    @Nested
+    class ConstructorShould {
 
-        // When
-        Throwable throwable = catchThrowable(() -> new Dummy(value));
+        @Test
+        void fail_when_value_is_null() {
+            // Given
+            value = null;
 
-        // Then
-        assertThat(throwable).isInstanceOf(InvalidDummmyException.class)
-                .hasMessage("value cannot be null or empty");
-    }
+            // When
+            Throwable throwable = catchThrowable(() -> new Dummy(value));
 
-    @Test
-    public void constructor_should_fail_when_value_is_empty() {
-        // Given
-        value = "";
+            // Then
+            assertThat(throwable).isInstanceOf(InvalidDummmyException.class)
+                    .hasMessage("value cannot be null or empty");
+        }
 
-        // When
-        Throwable throwable = catchThrowable(() -> new Dummy(value));
+        @Test
+        void fail_when_value_is_empty() {
+            // Given
+            value = "";
 
-        // Then
-        assertThat(throwable).isInstanceOf(InvalidDummmyException.class)
-                .hasMessage("value cannot be null or empty");
+            // When
+            Throwable throwable = catchThrowable(() -> new Dummy(value));
+
+            // Then
+            assertThat(throwable).isInstanceOf(InvalidDummmyException.class)
+                    .hasMessage("value cannot be null or empty");
+        }
     }
 
 }
