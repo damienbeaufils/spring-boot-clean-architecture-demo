@@ -53,3 +53,7 @@ task checkCleanArchitecture(type: Exec) {
     commandLine 'tools/check-clean-architecture.sh'
 }
 check.dependsOn checkCleanArchitecture
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2'
+}
