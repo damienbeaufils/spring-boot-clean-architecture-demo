@@ -21,4 +21,3 @@ echo ""
 echo "${UNAUTHORIZED_PACKAGES_USAGE_COUNT_IN_USE_CASES} unauthorized packages in ${USE_CASES_PACKAGE_PATH}:"
 find ${USE_CASES_PACKAGE_PATH} -name "*.java" -exec egrep -lw ${UNAUTHORIZED_PACKAGES_USAGE_IN_USE_CASES} {} \;
 exit 1
-

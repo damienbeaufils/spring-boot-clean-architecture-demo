@@ -3,14 +3,13 @@ import org.junit.platform.console.options.Details
 buildscript {
     ext {
         commonsLang3Version = '3.6'
-        junitJupiterVersion = '5.0.0'
-        junitPlatformVersion = '1.0.0'
+        junitJupiterVersion = '5.0.1'
+        junitPlatformVersion = '1.0.1'
         pitestPluginVersion = '1.2.2'
-        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+        springBootVersion = '2.0.0.M4'
     }
     repositories {
         mavenCentral()
-        maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
     }
     dependencies {
@@ -37,7 +36,6 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.spring.io/snapshot" }
     maven { url "https://repo.spring.io/milestone" }
 }
 
@@ -71,5 +69,5 @@ task checkCleanArchitecture(type: Exec) {
 check.dependsOn checkCleanArchitecture
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.2'
+    gradleVersion = '4.2.1'
 }
