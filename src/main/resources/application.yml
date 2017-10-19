@@ -7,5 +7,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+    mapping-resources:
+      - db/mappings/dummy.xml
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
