@@ -6,11 +6,12 @@ buildscript {
         junitJupiterVersion = '5.0.1'
         junitPlatformVersion = '1.0.1'
         pitestPluginVersion = '1.2.2'
-        springBootVersion = '2.0.0.M4'
+        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
     }
     repositories {
         mavenCentral()
         maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://repo.spring.io/snapshot" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -37,6 +38,7 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven { url "https://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/snapshot" }
 }
 
 
