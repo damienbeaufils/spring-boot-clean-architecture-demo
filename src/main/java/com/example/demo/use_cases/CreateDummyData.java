@@ -3,7 +3,6 @@ package com.example.demo.use_cases;
 
 import com.example.demo.domain.Dummy;
 import com.example.demo.domain.DummyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,7 +13,6 @@ public class CreateDummyData {
 
     private final DummyRepository dummyRepository;
 
-    @Autowired
     public CreateDummyData(DummyRepository dummyRepository) {
         this.dummyRepository = dummyRepository;
     }

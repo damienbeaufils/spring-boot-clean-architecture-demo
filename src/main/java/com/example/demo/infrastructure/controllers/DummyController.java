@@ -4,7 +4,6 @@ import com.example.demo.domain.Dummy;
 import com.example.demo.infrastructure.controllers.forms.CreateDummyDataForm;
 import com.example.demo.use_cases.CreateDummyData;
 import com.example.demo.use_cases.GetAllDummyData;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +18,6 @@ public class DummyController {
 
     private final GetAllDummyData getAllDummyData;
 
-    @Autowired
     public DummyController(CreateDummyData createDummyData, GetAllDummyData getAllDummyData) {
         this.createDummyData = createDummyData;
         this.getAllDummyData = getAllDummyData;
