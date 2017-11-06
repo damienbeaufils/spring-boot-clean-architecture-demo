@@ -6,12 +6,11 @@ buildscript {
         junitJupiterVersion = '5.0.1'
         junitPlatformVersion = '1.0.1'
         pitestPluginVersion = '1.2.2'
-        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+        springBootVersion = '2.0.0.M6'
     }
     repositories {
         mavenCentral()
         maven { url "https://repo.spring.io/milestone" }
-        maven { url "https://repo.spring.io/snapshot" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -38,7 +37,6 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven { url "https://repo.spring.io/milestone" }
-    maven { url "https://repo.spring.io/snapshot" }
 }
 
 
@@ -59,6 +57,11 @@ dependencies {
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
     testCompile("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
+    // The following dependency is necessary to avoid compiler warnings about
+    // not being able to find the Status enum used by the @API annotation when
+    // compiling test sources that use JUnit Jupiter.
+    // See https://github.com/sbrannen/spring-events/blob/master/build.gradle
+    testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
 }
 
 junitPlatform {
