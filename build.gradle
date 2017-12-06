@@ -2,7 +2,7 @@ import org.junit.platform.console.options.Details
 
 buildscript {
     ext {
-        commonsLang3Version = '3.6'
+        commonsLang3Version = '3.7'
         gradlePitestPlugin = '1.2.4'
         junitJupiterVersion = '5.0.2'
         junitPlatformVersion = '1.0.2'
