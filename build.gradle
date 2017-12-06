@@ -6,8 +6,8 @@ buildscript {
         junitJupiterVersion = '5.0.2'
         junitPlatformVersion = '1.0.2'
         springBootVersion = '2.0.0.M7'
+        pitestGradlePluginVersion = '1.2.4'
         pitestJunit5PluginVersion = '0.2'
-        pitestPluginVersion = '1.2.4'
         pitestVersion = '1.2.5'
     }
     repositories {
@@ -18,7 +18,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}")
-        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${pitestPluginVersion}")
+        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${pitestGradlePluginVersion}")
         pitest("org.pitest:pitest-junit5-plugin:${pitestJunit5PluginVersion}")
     }
 }
