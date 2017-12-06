@@ -3,19 +3,23 @@ import org.junit.platform.console.options.Details
 buildscript {
     ext {
         commonsLang3Version = '3.6'
+        gradlePitestPlugin = '1.2.4'
         junitJupiterVersion = '5.0.2'
         junitPlatformVersion = '1.0.2'
-        pitestPluginVersion = '1.2.2'
         springBootVersion = '2.0.0.M7'
+        pitestJunit5Plugin = '0.2'
+        pitestVersion = '1.2.5'
     }
     repositories {
         mavenCentral()
         maven { url "https://repo.spring.io/milestone" }
     }
+    configurations.maybeCreate('pitest')
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${pitestPluginVersion}")
         classpath("org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}")
+        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${gradlePitestPlugin}")
+        pitest("org.pitest:pitest-junit5-plugin:${pitestJunit5Plugin}")
     }
 }
 
@@ -23,8 +27,8 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'info.solidsoft.pitest'
 apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'info.solidsoft.pitest'
 
 pitest {
     targetClasses = ['com.example.demo.*']
