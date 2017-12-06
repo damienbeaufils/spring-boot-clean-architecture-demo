@@ -9,3 +9,5 @@ jobs:
       script: ./gradlew clean assemble
     - stage: test
       script: ./gradlew clean check
+    - stage: mutation
+      script: ./gradlew clean pitest
