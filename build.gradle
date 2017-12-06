@@ -6,7 +6,7 @@ buildscript {
         junitJupiterVersion = '5.0.1'
         junitPlatformVersion = '1.0.1'
         pitestPluginVersion = '1.2.2'
-        springBootVersion = '2.0.0.M6'
+        springBootVersion = '2.0.0.M7'
     }
     repositories {
         mavenCentral()
