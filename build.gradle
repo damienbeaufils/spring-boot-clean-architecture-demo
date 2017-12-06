@@ -3,8 +3,8 @@ import org.junit.platform.console.options.Details
 buildscript {
     ext {
         commonsLang3Version = '3.6'
-        junitJupiterVersion = '5.0.1'
-        junitPlatformVersion = '1.0.1'
+        junitJupiterVersion = '5.0.2'
+        junitPlatformVersion = '1.0.2'
         pitestPluginVersion = '1.2.2'
         springBootVersion = '2.0.0.M7'
     }
