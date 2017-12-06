@@ -3,11 +3,11 @@ import org.junit.platform.console.options.Details
 buildscript {
     ext {
         commonsLang3Version = '3.7'
-        gradlePitestPlugin = '1.2.4'
         junitJupiterVersion = '5.0.2'
         junitPlatformVersion = '1.0.2'
         springBootVersion = '2.0.0.M7'
-        pitestJunit5Plugin = '0.2'
+        pitestJunit5PluginVersion = '0.2'
+        pitestPluginVersion = '1.2.4'
         pitestVersion = '1.2.5'
     }
     repositories {
@@ -18,8 +18,8 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}")
-        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${gradlePitestPlugin}")
-        pitest("org.pitest:pitest-junit5-plugin:${pitestJunit5Plugin}")
+        classpath("info.solidsoft.gradle.pitest:gradle-pitest-plugin:${pitestPluginVersion}")
+        pitest("org.pitest:pitest-junit5-plugin:${pitestJunit5PluginVersion}")
     }
 }
 
