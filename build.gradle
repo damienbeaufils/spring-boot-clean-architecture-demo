@@ -3,8 +3,8 @@ import org.junit.platform.console.options.Details
 buildscript {
     ext {
         commonsLang3Version = '3.7'
-        junitJupiterVersion = '5.0.2'
-        junitPlatformVersion = '1.0.2'
+        junitJupiterVersion = '5.0.3'
+        junitPlatformVersion = '1.0.3'
         springBootVersion = '2.0.0.M7'
         pitestGradlePluginVersion = '1.2.4'
         pitestJunit5PluginVersion = '0.2'
@@ -61,11 +61,6 @@ dependencies {
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
     testCompile("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
-    // The following dependency is necessary to avoid compiler warnings about
-    // not being able to find the Status enum used by the @API annotation when
-    // compiling test sources that use JUnit Jupiter.
-    // See https://github.com/sbrannen/spring-events/blob/master/build.gradle
-    testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
 }
 
 junitPlatform {
