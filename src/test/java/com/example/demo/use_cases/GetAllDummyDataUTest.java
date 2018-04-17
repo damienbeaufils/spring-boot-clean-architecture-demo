@@ -1,6 +1,5 @@
 package com.example.demo.use_cases;
 
-import com.example.demo.MockitoExtension;
 import com.example.demo.domain.Dummy;
 import com.example.demo.domain.DummyRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
