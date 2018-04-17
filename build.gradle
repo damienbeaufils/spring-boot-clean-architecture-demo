@@ -3,7 +3,7 @@ buildscript {
         commonsLang3Version = '3.7'
         junitJupiterVersion = '5.1.0'
         junitPlatformVersion = '1.1.0'
-        springBootVersion = '2.0.0.RELEASE'
+        springBootVersion = '2.0.1.RELEASE'
         pitestGradlePluginVersion = '1.3.0'
         pitestJunit5PluginVersion = '0.4'
     }
