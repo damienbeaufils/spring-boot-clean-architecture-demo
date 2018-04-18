@@ -52,6 +52,8 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test') {
         // Exclude JUnit 4
         exclude group: 'junit'
+        // Exclude old mockito dependency because we need to override it in order to use Mockito >= 2.17 (see below)
+        exclude group: "org.mockito"
     }
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
