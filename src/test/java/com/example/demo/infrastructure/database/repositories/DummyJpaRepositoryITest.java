@@ -34,7 +34,7 @@ class DummyJpaRepositoryITest {
     }
 
     @Test
-    void save_should_persist_dummy_with_auto_incremented_id() throws Exception {
+    void save_should_persist_dummy_with_auto_incremented_id() {
         // Given
         Dummy secondDummy = new Dummy("secondDummy");
         Dummy firstPersist = dummyRepository.save(dummy);
@@ -60,7 +60,7 @@ class DummyJpaRepositoryITest {
     }
 
     @Test
-    void findAllByUserId_should_return_all_dummy() throws Exception {
+    void findAllByUserId_should_return_all_dummy() {
         // Given
         Dummy secondDummy = new Dummy("secondDummy");
         testEntityManager.persist(dummy);
