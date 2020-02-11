@@ -1,6 +1,8 @@
-# clean-architecture-demo
+# spring-boot-clean-architecture-demo
 
-[![Build Status](https://travis-ci.org/damienbeaufils/clean-architecture-demo.svg?branch=master)](https://travis-ci.org/damienbeaufils/clean-architecture-demo)
+[![Build Status](https://travis-ci.org/damienbeaufils/
+spring-boot-clean-architecture-demo.svg?branch=master)](https://travis-ci.org/damienbeaufils/
+spring-boot-clean-architecture-demo)
 
 An example of clean architecture with Spring Boot
 
