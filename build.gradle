@@ -69,6 +69,6 @@ task checkCleanArchitecture(type: Exec) {
 }
 check.dependsOn checkCleanArchitecture
 
-task wrapper(type: Wrapper) {
+wrapper {
     gradleVersion = '4.10.2'
 }
